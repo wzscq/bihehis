@@ -8,17 +8,31 @@ import (
 )
 
 type Repository interface {
-	GetRegistrationNumberSource(departmentID,outpatientTypeID,date string)(string,error)
 	query(sql string)([]map[string]interface{},error)
+	GetGegistrationNumberSourcen(departmentID,outpatientTypeID string)(string,error)
 }
 
 type DefatultRepository struct {
 	DB *sql.DB
 }
 
-func (repo *DefatultRepository)GetRegistrationNumberSource(departmentID,outpatientTypeID,date string)(string,error){
-	sql:="select id from registration_number_source where department_id='"+departmentID+"' and outpatient_type_id='"+outpatientTypeID+"' and date='"+date+"'";
+func (repo *DefatultRepository)GetGegistrationNumberSourcen(departmentID,outpatientTypeID string)(string,error){
+	dateStart:=time.Now().Format("2006-01-02")+" 00:00:00"
+	dateEnd:=time.Now().Format("2006-01-02")+" 23:59:59"
+	sql:="select id from registration_number_source where department_id='"+
+				departmentID+"' and outpatient_type_id='"+
+				outpatientTypeID+"' and date>='"+
+				dateStart+"' and date<='"+dateEnd+"'"
+
+	list,err:=repo.query(sql)
+	if err!=nil{
+		return "",err
+	}
 	
+	if len(list)==0{
+		return "",
+	}
+	return list[0]["number_source_id"].(string),nil
 }
 
 func (repo *DefatultRepository)query(sql string)([]map[string]interface{},error){
