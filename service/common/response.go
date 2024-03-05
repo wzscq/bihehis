@@ -22,6 +22,7 @@ const (
 	ResultCannotLoginCRV=10200001
 	ResultSaveDataError=10200002
 	ResultQueryRequestError=10200003
+	ResultRegisterError=10200004
 )
 
 var errMsg = map[int]CommonRsp{
@@ -53,6 +54,11 @@ var errMsg = map[int]CommonRsp{
 	ResultQueryRequestError:CommonRsp{
 		ErrorCode:ResultQueryRequestError,
 		Message:"调用平台查询数据时发生错误，请与管理员联系处理",
+		Error:true,
+	},
+	ResultRegisterError:CommonRsp{
+		ErrorCode:ResultRegisterError,
+		Message:"挂号处理失败",
 		Error:true,
 	},
 }

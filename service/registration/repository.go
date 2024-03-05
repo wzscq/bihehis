@@ -8,11 +8,17 @@ import (
 )
 
 type Repository interface {
+	GetRegistrationNumberSource(departmentID,outpatientTypeID,date string)(string,error)
 	query(sql string)([]map[string]interface{},error)
 }
 
 type DefatultRepository struct {
 	DB *sql.DB
+}
+
+func (repo *DefatultRepository)GetRegistrationNumberSource(departmentID,outpatientTypeID,date string)(string,error){
+	sql:="select id from registration_number_source where department_id='"+departmentID+"' and outpatient_type_id='"+outpatientTypeID+"' and date='"+date+"'";
+	
 }
 
 func (repo *DefatultRepository)query(sql string)([]map[string]interface{},error){

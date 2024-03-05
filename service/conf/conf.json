@@ -1,19 +1,19 @@
 {
     "mysql":{
-        "server":"49.4.3.226:4306",
+        "server":"182.42.81.6:4306",
         "password":"123456",
         "user":"root",
-        "dbName":"diagnosis",
-        "connMaxLifetime":30,
+        "dbName":"bihe_his",
+        "connMaxLifetime":60,
         "maxOpenConns":10,
-        "maxIdleConns":5
+        "maxIdleConns":10
     },
     "service":{
         "port":"localhost:8300"
     },
     "crv":{
         "server":"http://127.0.0.1:8200",
-        "token":"carapi",
-        "appID":"diagnosis"
+        "token":"bihe_his_service",
+        "appID":""
     }
 }

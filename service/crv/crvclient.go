@@ -9,14 +9,14 @@ import (
 )
 
 type loginRep struct {
-    UserID     string  `json:"userID"`
-    Password  string   `json:"password"`
+  UserID     string  `json:"userID"`
+  Password  string   `json:"password"`
 	AppID     string   `json:"appID"`
 } 
 
 type loginResult struct {
-    UserID     *string  `json:"userID"`
-    UserName  *string  `json:"userName"`
+  UserID     *string  `json:"userID"`
+  UserName  *string  `json:"userName"`
 	Token     *string  `json:"token"`
 	AppID     *string  `json:"appID"`
 }
@@ -53,9 +53,6 @@ type CommonReq struct {
 	Filter *map[string]interface{} `json:"filter"`
 	List *[]map[string]interface{} `json:"list"`
 	Fields *[]map[string]interface{} `json:"fields"`
-	UserID string `json:"userID"`
-	AppDB string `json:"appDB"`
-	UserRoles string `json:"userRoles"`
 	//Sorter *[]sorter `json:"sorter"`
 	SelectedRowKeys *[]string `json:"selectedRowKeys"`
 	Pagination *Pagination `json:"pagination"`
